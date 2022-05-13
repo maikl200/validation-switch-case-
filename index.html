@@ -6,7 +6,46 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-
+<header class="header">
+    <h1>Валидация</h1>
+</header>
+<main class="main">
+    <div class="container">
+        <form class="info" action="">
+            <label>
+            <span>
+                Введите ФИО
+            </span>
+                <input class="input" id="fio" data-input type="text"
+                       placeholder="Мартыненко Алексей Михайлович">
+            </label>
+            <span id="errorFio" class="name-error">Поле заполненно некорректно</span>
+            <label>
+                    <span>
+                        Введите пароль
+                    </span>
+                <input class="input" id="password" data-input type="password" placeholder="**********">
+            </label>
+            <span id="errorPassword" class="password-error">Поле заполненно некорректно</span>
+            <label>
+                    <span>
+                        Подтвердите пароль
+                    </span>
+                <input class="input" id="repeatPassword" data-input type="password"
+                       placeholder="**********">
+            </label>
+            <span id="errorRepeatPassword" class="two_password-error">Поле заполненно некорректно</span>
+            <label>
+                    <span>
+                        Введите e-mail
+                    </span>
+                <input class="input" data-input id="email" type="email" placeholder="mart@mail.ru">
+            </label>
+            <span id="errorEmail" class="email-error">Поле заполненно некорректно</span>
+            <button class="btn" type="submit">Отправить</button>
+        </form>
+    </div>
+</main>
 
 <script src="script.js"></script>
 </body>
