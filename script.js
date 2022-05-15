@@ -1,4 +1,6 @@
-const form = document.querySelector('.info');
+const form = document.querySelector('.info')
+const password = document.querySelector('#password')
+const fio = document.querySelector('#fio')
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -25,106 +27,46 @@ const elementsProcessing = (elements) => {
 
 const Patterns = {
   email: /\S+@\S+\.\S+/,
-  password: /\S+@\S+\.\S+/,
-  twoPassword: /\S+@\S+\.\S+/,
-  name: /\S+@\S+\.\S+/
+  password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+  name: /^([А-ЯA-Z]|[А-ЯA-Z][\x27а-яa-z]+|[А-ЯA-Z][\x27а-яa-z]+-([А-ЯA-Z][\x27а-яa-z]+|(оглы)|(кызы)))\040[А-ЯA-Z][\x27а-яa-z]+(\040[А-ЯA-Z][\x27а-яa-z]+)?$/
 };
 
-
 const validation = (input) => {
-  switch (true) {
-    case Patterns.name.test(input.value):
-      messageError(input, true);
-      return true;
-    case Patterns.password.test(input.value):
-      messageError(input, true);
-      return true;
-    case Patterns.twoPassword.test(input.value):
-      messageError(input, true);
-      return true;
-    case Patterns.email.test(input.value):
-      messageError(input, true);
-      return true;
-    default:
-      messageError(input, false);
-      return false;
+  switch (input.name) {
+    case 'fio':
+      if (Patterns.name.test(input.value)) {
+        messageError(input, true)
+        return true
+      } else messageError(input, false)
+      break
+
+    case 'password':
+      if (Patterns.password.test(input.value)) {
+        messageError(input, true)
+        return true
+      } else messageError(input, false);
+      break
+
+    case 'repeatPassword':
+      if (input.value === password.value && input.value !== '') {
+        messageError(input, true)
+        return true
+      } else messageError(input, false)
+      break
+
+    case 'email':
+      if (Patterns.email.test(input.value)) {
+        messageError(input, true)
+        return true
+      } else messageError(input, false)
+      break
   }
 }
 
 const messageError = (input, boolean) => {
   boolean
       ?
-      input.parentNode.nextElementSibling.style.display = 'none'
+      input.parentNode.nextElementSibling.style.visibility = 'hidden'
       :
-      input.parentNode.nextElementSibling.style.display = 'block';
+      input.parentNode.nextElementSibling.style.visibility = 'visible';
 }
-
-
-// let fio = document.querySelector('#fio')
-// let password = document.querySelector('#password')
-// let repeatPassword = document.querySelector('#repeatPassword')
-// let email = document.querySelector('#email')
-// let btn = document.querySelector('.btn')
-// let errorFio = document.querySelector('#errorFio')
-// let errorPassword = document.querySelector('#errorPassword')
-// let errorRepeatPassword = document.querySelector('#errorRepeatPassword')
-// let errorEmail = document.querySelector('#errorEmail')
-//
-//
-// let render = () => {
-//   if (fio.value && password.value && repeatPassword.value && email.value) {
-//     btn.removeAttribute('disabled')
-//   }
-// }
-//
-// let emailError = () => {
-//   let regEmail = /\S+@\S+\.\S+/
-//   switch (!regEmail.test(email.value)) {
-//     case true:
-//       errorEmail.innerHTML = 'Неверно введен email'
-//       break
-//
-//     default:
-//       errorEmail.innerHTML = ''
-//       render()
-//   }
-// }
-//
-// let repeatPasswordError = () => {
-//   switch (repeatPassword.value !== password.value) {
-//     case true:
-//       errorRepeatPassword.innerHTML = 'Пароль не совподает'
-//       break
-//
-//     default:
-//       errorRepeatPassword.innerHTML = ''
-//       render()
-//   }
-// }
-//
-// let passwordError = () => {
-//
-//   switch (password.value.length < 10) {
-//     case true:
-//       errorPassword.innerHTML = 'Слишком кароткий пароль. Минимум 10 символов'
-//       break
-//
-//     default:
-//       errorPassword.innerHTML = ''
-//       render()
-//   }
-// }
-//
-// let fioError = () => {
-//   switch (fio.value.length < 10) {
-//     case true:
-//       errorFio.innerHTML = 'Неверное ФИО'
-//       break
-//
-//     default:
-//       errorFio.innerHTML = ''
-//       render()
-//   }
-// }
-
-

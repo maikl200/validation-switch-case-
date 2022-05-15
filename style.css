@@ -65,7 +65,7 @@ label {
 }
 
 .name-error,.password-error,.two_password-error,.email-error {
-    display: none;
+    visibility: hidden;
     color: #d20101;
     font-size: 20px;
 }
