@@ -1,6 +1,5 @@
 const form = document.querySelector('.info')
 const password = document.querySelector('#password')
-const fio = document.querySelector('#fio')
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
